@@ -26,10 +26,38 @@ would not have provided us with any information gain as the value was the same f
 
 This left us with a data set with more than 20 features and 225 examples.
 
-## Feature Scaling
-For feature scaling, we decided to use both Sci-Kit Learn scaling techniques as well as L2 regularization. As seen in the EDA, the effect of scalers on outliers can already be captured by standard and min-max scalers, so we apply these two scalers to the data first. L2 
-regularization is implemented in the feature_scaling.ipynb notebook. 
+## EDA
+To do EDA, we started with the basics: scatterplot matrix and the correlation heatmap. These, in and of themselves, 
+yielded some very interesting results. We saw some features like "Percent Financial Aid" being incredibly correlated with 
+our target: "Total Cost". This information could prove useful for regressors, such as linear regression, in determining 
+a simple model to predict a University's cost. Indeed, there were a lot of features that had some sort of relationship
+with each other. We believe that, due to this data analysis, we have the opportunity to perhaps even create a simple linear
+model which yields a solid prediction. 
 
+We could also look into classification: we would need to simply set a threshold at the median value of the target feature 
+to create a binary classification. This could yield results along the lines of "could we predict if the cost of attending
+a particular school is greater than the median value for schools like it?" However, I believe determining the actual cost 
+of the school would be incredibly interesting.  
+
+
+## Feature Scaling
+For feature scaling, we decided to use Sci-Kit Learn scaling techniques. As seen in the EDA, the effect of scalers on 
+outliers can already be captured by standard and min-max scalers, so we apply these two scalers to the data first. We
+will explore L2 regularization when it comes time to work with our models.
 
 ## Dimensionality Reduction
-We decided to try out both RF feature elimination and PCA. For feature selection using random forest, we first applied the standard and min-max scalers to normalize and standardize the dataset. Then we used a random tree regressor on the data with 80-20 train-test split, and printed out the feature importances obtained by the RF. We ranked the 20 features by feature importance, and applied the threshold of 0.01 to the features to get the 8 most relevant ones.
+We decided to try out  RF feature elimination. For feature selection using random forest, we first applied 
+the standard and min-max scalers to normalize and standardize the dataset. Then we used a random tree regressor on the 
+data with 80-20 train-test split, and printed out the feature importances obtained by the RF. We ranked the 20 features 
+by feature importance, and applied the threshold of 0.01 to the features to get the 8 most relevant ones. The feature
+"Average Amount of Aid" has the highest feature importance by far. See the FeatureImportances.png file to see the features
+ranked accordingly.
+
+We would also like to try out using PCA to see if there is any validation in terms of which features we select as the most
+important. That being said, it might not even be worth it, considering the very clear delineation between the feature 
+importances derived by the RF selection method. 
+
+Following the RF method for dimensionality reduction, we believe it would be beneficial to even reduce the feature space 
+to include only ["Average Amount of Aid", "Percent Financial Aid", "Percent Awarded", "Total Staff", "Graduation Rate", 
+"Percent Admitted", "Number of Bachelor's Degrees"]. We believe this would give us a smaller dimensionality while also 
+maintaining high levels of accuracy. We will try both datasets out when we create our models. 

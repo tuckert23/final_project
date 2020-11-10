@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.feature_selection import SelectFromModel
 
-df = pd.read_csv("./cleaned_data_final.csv")
+df = pd.read_csv("./cleaned_data.csv")
 X, y = df.iloc[:, 0:-1].values, df.iloc[:, -1].values
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=1)
 
