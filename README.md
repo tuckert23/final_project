@@ -27,9 +27,9 @@ would not have provided us with any information gain as the value was the same f
 This left us with a data set with more than 20 features and 225 examples.
 
 ## Feature Scaling
-For feature scaling, we decided to use both Sci-Kit Learn scaling techniques as well as L2 regularization. L2 
+For feature scaling, we decided to use both Sci-Kit Learn scaling techniques as well as L2 regularization. As seen in the EDA, the effect of scalers on outliers can already be captured by standard and min-max scalers, so we apply these two scalers to the data first. L2 
 regularization is implemented in the feature_scaling.ipynb notebook. 
 
 
 ## Dimensionality Reduction
-We decided to try out both RF feature elimination and PCA. 
+We decided to try out both RF feature elimination and PCA. For feature selection using random forest, we first applied the standard and min-max scalers to normalize and standardize the dataset. Then we used a random tree regressor on the data with 80-20 train-test split, and printed out the feature importances obtained by the RF. We ranked the 20 features by feature importance, and applied the threshold of 0.01 to the features to get the 8 most relevant ones.
