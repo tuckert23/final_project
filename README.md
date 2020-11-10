@@ -27,8 +27,9 @@ would not have provided us with any information gain as the value was the same f
 This left us with a data set with more than 20 features and 225 examples.
 
 ## Feature Scaling
-For feature scaling, we need to determine which 
+For feature scaling, we decided to use both Sci-Kit Learn scaling techniques as well as L2 regularization. L2 
+regularization is implemented in the feature_scaling.ipynb notebook. 
 
 
 ## Dimensionality Reduction
-We decided 
+We decided to try out both RF feature elimination and PCA. 
