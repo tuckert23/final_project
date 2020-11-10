@@ -39,6 +39,10 @@ to create a binary classification. This could yield results along the lines of "
 a particular school is greater than the median value for schools like it?" However, I believe determining the actual cost 
 of the school would be incredibly interesting.  
 
+Since we do see a lot of relatively correlated features in the heatmap, it might be unwise to use a model such as naïve 
+bayes to predict, since many of the features are correlated. However, after feature selection, we might want to evaluate 
+more models than we think.
+
 
 ## Feature Scaling
 For feature scaling, we decided to use Sci-Kit Learn scaling techniques. As seen in the EDA, the effect of scalers on 
